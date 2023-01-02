@@ -1,9 +1,6 @@
 // Linked list interface
 // Franco Reyes, COMP2521 23T0 tut01
 
-// #ifndef LIST_H
-// #define LIST_H
-
 #include <stdbool.h>
 
 typedef struct node {
@@ -50,5 +47,3 @@ List listDelete(List l, int value);
  * The function should return a pointer to the beginning of the updated list.
 */
 List listDeleteEvens(List l);
-
-// #endif
