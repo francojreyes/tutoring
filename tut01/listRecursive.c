@@ -1,12 +1,13 @@
 // Recursive implmentation of linked list
 // Franco Reyes, COMP2521 23T0 tut01
 
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "list.h"
 
-static Node *newNode(int value) {
-    Node *n = malloc(sizeof(struct node));
+static List newNode(int value) {
+    List n = malloc(sizeof(struct node));
     n->data = value;
     n->next = NULL;
     return n;
@@ -16,7 +17,12 @@ static Node *newNode(int value) {
  * Print the values of a linked list, space-separated
 */
 void listPrint(List l) {
-
+    if (l == NULL) {
+        printf("\n");
+    } else {
+        printf("%d ", l->value);
+        listPrint(l->next);
+    }
 }
 
 /**
@@ -24,7 +30,12 @@ void listPrint(List l) {
  * The function should return a pointer to the beginning of the updated list.
 */
 List listAppend(List l, int value) {
-    return newNode(value);
+    if (l == NULL) {
+        return newNode(value);
+    } else {
+        l->next = listAppend(l->next, value);
+        return l;
+    }
 }
 
 /**
