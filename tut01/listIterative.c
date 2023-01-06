@@ -45,21 +45,38 @@ List listAppend(List l, int value) {
  * Compute the length of a linked list
 */
 int listLength(List l) {
-    return 0;
+    List curr = l;
+    int len = 0;
+    while (curr != NULL) {
+        curr = curr->next;
+        len++;
+    }
+    return len;
 }
 
 /**
  * Count the number of odd numbers in a linked list
 */
 int listCountOdds(List l) {
-    return 0;
+    int odds = 0;
+    for (List curr = l; curr != NULL; curr = curr->next) {
+        if (curr->data % 2 == 1) {
+            odds++;
+        }
+    }
+    return odds;
 }
 
 /**
  * Check whether a list is sorted in ascending order
 */
 bool listIsSorted(List l) {
-    return false;
+    for (List curr = l; curr != NULL && curr->next != NULL; curr = curr->next) {
+        if (curr->next->data < curr->data) {
+            return false;
+        }
+    }
+    return true;
 }
 
 /**
@@ -67,6 +84,19 @@ bool listIsSorted(List l) {
  * The function should return a pointer to the beginning of the updated list.
 */
 List listDelete(List l, int value) {
+    if (l->data == value) {
+        List tmp = l->next;
+        free(l);
+        return tmp;
+    }
+
+    List curr = l;
+    while (curr->next != NULL && curr->next->data != value) {
+        curr = curr->next;
+    }
+    List tmp = curr->next;
+    curr->next = curr->next->next;
+    free(tmp);
     return l;
 }
 
@@ -75,5 +105,21 @@ List listDelete(List l, int value) {
  * The function should return a pointer to the beginning of the updated list.
 */
 List listDeleteEvens(List l) {
+    while (l != NULL && l->data % 2 == 0) {
+        List tmp = l->next;
+        free(l);
+        l = tmp;
+    }
+
+    List curr = l;
+    while (curr != NULL && curr->next != NULL) {
+        if (curr->next->data % 2 == 0) {
+            List tmp = curr->next;
+            curr->next = curr->next->next;
+            free(tmp);
+        }
+        curr = curr->next;
+    }
+    
     return l;
 }

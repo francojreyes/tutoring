@@ -20,7 +20,7 @@ void listPrint(List l) {
     if (l == NULL) {
         printf("\n");
     } else {
-        printf("%d ", l->value);
+        printf("%d ", l->data);
         listPrint(l->next);
     }
 }
@@ -42,21 +42,35 @@ List listAppend(List l, int value) {
  * Compute the length of a linked list
 */
 int listLength(List l) {
-    return 0;
+    if (l == NULL) {
+        return 0;
+    } else {
+        return listLength(l->next) + 1;
+    }
 }
 
 /**
  * Count the number of odd numbers in a linked list
 */
 int listCountOdds(List l) {
-    return 0;
+    if (l == NULL) {
+        return 0;
+    } else {
+        return listCountOdds(l->next) + (l->data % 2);
+    }
 }
 
 /**
  * Check whether a list is sorted in ascending order
 */
 bool listIsSorted(List l) {
-    return false;
+    if (l == NULL || l->next == NULL) {
+        return true;
+    } else if (l->next->data < l->data) {
+        return false;
+    } else {
+        return listIsSorted(l->next);
+    }
 }
 
 /**
@@ -64,7 +78,16 @@ bool listIsSorted(List l) {
  * The function should return a pointer to the beginning of the updated list.
 */
 List listDelete(List l, int value) {
-    return l;
+    if (l == NULL) {
+        return l;
+    } else if (l->data == value) {
+        List tmp = l->next;
+        free(l);
+        return tmp;
+    } else {
+        l->next = listDelete(l->next, value);
+        return l;
+    }
 }
 
 /**
@@ -72,5 +95,14 @@ List listDelete(List l, int value) {
  * The function should return a pointer to the beginning of the updated list.
 */
 List listDeleteEvens(List l) {
-    return l;
+    if (l == NULL) {
+        return l;
+    } else if (l->data % 2 == 0) {
+        List tmp = l->next;
+        free(l);
+        return listDeleteEvens(tmp);
+    } else {
+        l->next = listDeleteEvens(l->next);
+        return l;
+    }
 }
