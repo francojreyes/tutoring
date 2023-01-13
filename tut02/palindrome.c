@@ -10,7 +10,17 @@ int main(int argc, char **argv) {
     return 0;
 }
 
+// COmplexity O(n)
 bool isPalindrome(char *s) {
-    // int n = strlen(s);
-    return false;
+    int n = strlen(s);          // O(n)
+    int l = 0;                  // O(1)
+    int r = n - 1;              // O(1)
+    while (l < r) {             // O(n)
+        if (s[l] != s[r]) {         // O(1)
+            return false;           // O(1)
+        }                           
+        l++;                        // O(1)
+        r--;                        // O(1)
+    }
+    return true;                    // O(1)
 }
