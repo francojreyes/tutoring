@@ -13,21 +13,48 @@ static Graph createGraph();
 
 int main(void) {
     Graph g = createGraph();
-    Set r = reachable(g, 6);
 
-    printf("Reachable vertices: ");
-    SetShow(r);
-    printf("\n");
+    Vertex vertices[4] = {0, 5, 1, 6};
+    for (int i = 0; i < 4; i++) {
+        Set r = reachable(g, vertices[i]);
+        printf("Reachable from %d: ", vertices[i]);
+        SetShow(r);
+        printf("\n");
+        SetFree(r);
+    }
 
     GraphFree(g);
-    SetFree(r);
 }
 
 static Set reachable(Graph g, Vertex src) {
-    return SetNew();
+    Set visited = SetNew();
+    Queue q = QueueNew();
+
+    SetInsert(visited, src);
+    QueueEnqueue(q, src);
+
+    while (!QueueIsEmpty(q)) {
+        Vertex v = QueueDequeue(q);
+        for (int w = 0; w < GraphNumVertices(g); w++) {
+            if (GraphIsAdjacent(g, v, w) && !SetContains(visited, w)) {
+                QueueEnqueue(q, w);
+                SetInsert(visited, w);
+            }
+        }
+    }
+
+    QueueFree(q);
+    return visited;
 }
 
-// static void doReachable(Graph g, Vertex v, Set reachable) {}
+// static void doReachable(Graph g, Vertex v, Set reachable) {
+//     SetInsert(reachable, v);
+//     for (int w = 0; w < GraphNumVertices(g); w++) {
+//         if (GraphIsAdjacent(g, v, w) && !SetContains(reachable, w)) {
+//             doReachable(g, w, reachable);
+//         }
+//     }
+// }
 
 static Graph createGraph() {
     Graph g = GraphNew(10);
