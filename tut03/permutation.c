@@ -20,6 +20,15 @@ int main(int argc, char **argv) {
     free(p);
 }
 
+// A = [CAT, DOG, MOUSE] P = [2, 3, 1], outputs [MOUSE, CAT, DOG]
 void printPermutation(char **a, int *p, int n) {
-    
+    char **temp = malloc(n * sizeof(char *));
+    for (int i = 0; i < n; i++) {       // O(n)
+        temp[p[i] - 1] = a[i];
+    }
+
+    for (int i = 0; i < n; i++) {       // O(n)
+        printf("%s\n", temp[i]);
+    }
+    free(temp);
 }

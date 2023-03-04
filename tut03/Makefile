@@ -11,7 +11,7 @@ twosum: twosum.c
 	$(CC) $(CFLAGS) -o twosum twosum.c
 
 polynomial: polynomial.c
-	$(CC) $(CFLAGS) -o polynomial polynomial.c
+	$(CC) $(CFLAGS) -lm -o polynomial polynomial.c
 
 permutation: permutation.c
 	$(CC) $(CFLAGS) -o permutation permutation.c
