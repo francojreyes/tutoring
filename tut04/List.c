@@ -95,7 +95,7 @@ List ListDelete(List l, int value) {
     } else if (l->data == value) {
         List newHead = l->next;
         free(l);
-        return ListDelete(newHead, value);
+        return newHead;
     } else {
         List restOfList = l->next;
         l->next = ListDelete(restOfList, value);
@@ -107,16 +107,17 @@ List ListDelete(List l, int value) {
  * Delete all the even numbers from a linked list.
  * The function should return a pointer to the beginning of the updated list.
 */
-List ListDeleteEvens(List l) {
+List ListDeleteIf(List l, ConditionFunction cf) {
     if (l == NULL) {
         return NULL;
-    } else if (l->data % 2 == 0) {
+    } else if (cf(l->data)) {
         List newHead = l->next;
         free(l);
-        return ListDeleteEvens(newHead);
+        return ListDeleteIf(newHead, cf);
     } else {
         List restOfList = l->next;
-        l->next = ListDeleteEvens(restOfList);
+        l->next = ListDeleteIf(restOfList, cf);
         return l;
     }
 }
+

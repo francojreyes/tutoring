@@ -13,6 +13,8 @@ typedef struct node {
 
 typedef Node *List;
 
+typedef bool (*ConditionFunction)(int);
+
 /**
  * Frees given list
 */
@@ -54,6 +56,6 @@ List ListDelete(List l, int value);
  * Delete all the even numbers from a linked list.
  * The function should return a pointer to the beginning of the updated list.
 */
-List ListDeleteEvens(List l);
+List ListDeleteIf(List l, ConditionFunction cf);
 
 #endif
