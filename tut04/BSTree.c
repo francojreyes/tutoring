@@ -61,7 +61,9 @@ int BSTreeNumNodes(BSTree t) {
 	if (t == NULL) {
 		return 0;
 	} else {
-		return BSTreeNumNodes(t->left) + BSTreeNumNodes(t->right) + 1;
+		int nodesInLeft = BSTreeNumNodes(t->left);
+		int nodesInRight = BSTreeNumNodes(t->right);
+		return nodesInLeft + nodesInRight + 1;
 	}
 }
 
