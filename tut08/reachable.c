@@ -26,7 +26,26 @@ int main(void) {
 }
 
 static Set reachable(Graph g, Vertex src) {
-    return SetNew();
+    Set reachable = SetNew();
+
+    Queue q = QueueNew();
+    QueueEnqueue(q, src);
+    while (!QueueIsEmpty(q)) {
+        Vertex v = QueueDequeue(q);
+        if (SetContains(reachable, v)) {
+            continue;
+        }
+        SetInsert(reachable, v);
+        
+        for (Vertex w = 0; w < GraphNumVertices(g); w++) {
+            if (GraphIsAdjacent(g, v, w)) {
+                QueueEnqueue(q, w);
+            }
+        }
+    }
+
+    QueueFree(q);
+    return reachable;
 }
 
 static Graph createGraph() {
