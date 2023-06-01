@@ -17,7 +17,6 @@ static List newNode(int value) {
  * Print the values of a linked list, space-separated
 */
 void listPrint(List l) {
-    // hello
     for (List curr = l; curr != NULL; curr = curr->next) {
         printf("%d ", curr->data);
     }
@@ -46,34 +45,21 @@ List listAppend(List l, int value) {
  * Compute the length of a linked list
 */
 int listLength(List l) {
-    int count = 0;
-    for (List curr = l; curr != NULL; curr = curr->next) {
-        count++;
-    }
-    return count;
+    return 0;
 }
 
 /**
  * Count the number of odd numbers in a linked list
 */
 int listCountOdds(List l) {
-    int count = 0;
-    for (List curr = l; curr != NULL; curr = curr->next) {
-        count += curr->data % 2;
-    }
-    return count;
+    return 0;
 }
 
 /**
  * Check whether a list is sorted in ascending order
 */
 bool listIsSorted(List l) {
-    for (List curr = l; curr != NULL && curr->next != NULL; curr = curr->next) {
-        if (curr->data > curr->next->data) {
-            return false;
-        }
-    }
-    return true;
+    return false;
 }
 
 /**
@@ -81,22 +67,7 @@ bool listIsSorted(List l) {
  * The function should return a pointer to the beginning of the updated list.
 */
 List listDelete(List l, int value) {
-    List prev = NULL;
-    List curr = l;
-    while (curr != NULL && curr->data != value) {
-        prev = curr;
-        curr = curr->next; 
-    }
-
-    if (prev != NULL) {
-        prev->next = curr->next;
-        free(curr);
-        return l;
-    } else {
-        List newHead = l->next;
-        free(l);
-        return newHead;
-    }
+    return l;
 }
 
 /**

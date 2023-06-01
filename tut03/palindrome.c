@@ -23,17 +23,5 @@ int main(int argc, char **argv) {
  * For example, "racecar" is a palindrome, while "reviewer" is not
 */
 bool isPalindrome(char *s, int n) {
-    // Loop from the back, and check each char is equal to the fornt
-    for (int i = 0; i < n; i++) {       // O(n)
-        if (s[i] != s[n - 1 - i]) {         // O(1)
-            return false;                   // O(1)
-        }
-    }                                   // Overall: O(n) * O(1) = O(n)
-
-    return true;                        // O(1)
+    return true;
 }
-// Complexity: O(n)
-// Best case O(1)
-// When first letter and last letter are not equal
-
-// for loop is (number of times it runs) * (time complexity of inside)

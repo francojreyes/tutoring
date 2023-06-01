@@ -32,16 +32,8 @@ int main(void) {
  * For example, if p = {1, 2, 3}, p(x) = 3x^2 + 2x + 1
 */
 int evalPolynomial(int *p, int n, int x) {
-    int value = 0;                      // O(1)
-    int term = 1;                       // O(1)
-    for (int i = 0; i <= n; i++) {      // O(n)
-        value += p[i] * term;               // O(1)
-        term *= x;                          // O(1)
-    }                                   // O(n) * O(1) = O(n)
-    return value;
+    return 0;
 }
-// Overall: O(n^2)
-// O(n)
 
 /**
  * Prints a polynomial

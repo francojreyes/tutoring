@@ -58,30 +58,14 @@ static BSTree newNode(int value) {
  * Count the total number of nodes in a tree
 */
 int BSTreeNumNodes(BSTree t) {
-	if (t == NULL) {
-		return 0;
-	} else {
-		int nodesInLeft = BSTreeNumNodes(t->left);
-		int nodesInRight = BSTreeNumNodes(t->right);
-		return nodesInLeft + nodesInRight + 1;
-	}
+	return 0;
 }
 
 /**
  * Counts the number of odd values in a tree
 */
 int BSTreeCountOdds(BSTree t) {
-	if (t == NULL) {
-		return 0;
-	} else {
-		int oddsInLeft = BSTreeCountOdds(t->left);
-		int oddsInRight = BSTreeCountOdds(t->right);
-		return oddsInLeft + oddsInRight + t->value % 2;
-	}
-}
-
-int max(int a, int b) {
-	return a > b ? a : b;
+	return 0;
 }
 
 /**
@@ -90,13 +74,7 @@ int max(int a, int b) {
  * The path length is a count of the number of links (edges) on the path.
 */
 int BSTreeHeight(BSTree t) {
-	if (t == NULL) {
-		return -1;
-	}
-
-	int lh = BSTreeHeight(t->left);
-	int rh = BSTreeHeight(t->right);
-	return max(lh, rh) + 1;
+	return 0;
 }
 
 /**
@@ -104,11 +82,7 @@ int BSTreeHeight(BSTree t) {
  * An internal node is a node with at least one non-empty subtree.
 */
 int BSTreeCountInternal(BSTree t) {
-	if (t == NULL || (t->left == NULL && t->right == NULL)) {
-		return 0;
-	} else {
-		return BSTreeCountInternal(t->left) + BSTreeCountInternal(t->right) + 1;
-	}
+	return 0;
 }
 
 /**
@@ -117,19 +91,7 @@ int BSTreeCountInternal(BSTree t) {
  * The level of the root node is zero. 
 */
 int BSTreeNodeLevel(BSTree t, int key) {
-	if (t == NULL) {
-		return -1;
-	} else if (t->value == key) {
-		return 0;
-	} else {
-		int level;
-		if (key < t->value) {
-			level = BSTreeNodeLevel(t->left, key);
-		} else {
-			level = BSTreeNodeLevel(t->right, key);
-		}
-		return level == -1 ? -1 : level + 1;
-	}
+	return 0;
 }
 
 /**
@@ -146,15 +108,5 @@ int BSTreeCountGreater(BSTree t, int val) {
  * returns NOT_HEIGHT_BALANCED.
 */
 int isHeightBalanced(BSTree t) {
-	if (t == NULL) {
-		return -1;
-	}
-
-	int lh = isHeightBalanced(t->left);
-	int rh = isHeightBalanced(t->right);
-	if (lh == NOT_HEIGHT_BALANCED || rh == NOT_HEIGHT_BALANCED || abs(lh - rh) > 1) {
-		return NOT_HEIGHT_BALANCED;
-	}
-
-	return max(lh, rh) + 1;
+	return 0;
 }

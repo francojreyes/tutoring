@@ -42,35 +42,21 @@ List listAppend(List l, int value) {
  * Compute the length of a linked list
 */
 int listLength(List l) {
-    if (l == NULL) {
-        return 0;
-    } else {
-        return listLength(l->next) + 1;
-    }
+    return 0;
 }
 
 /**
  * Count the number of odd numbers in a linked list
 */
 int listCountOdds(List l) {
-    if (l == NULL) {
-        return 0;
-    } else {
-        return listCountOdds(l->next) + l->data % 2;
-    }
+    return 0;
 }
 
 /**
  * Check whether a list is sorted in ascending order
 */
 bool listIsSorted(List l) {
-    if (l == NULL || l->next == NULL) {
-        return true;
-    } else if (l->next->data < l->data) {
-        return false;
-    } else {
-        return listIsSorted(l->next);
-    }
+    return false;
 }
 
 /**
@@ -78,17 +64,7 @@ bool listIsSorted(List l) {
  * The function should return a pointer to the beginning of the updated list.
 */
 List listDelete(List l, int value) {
-    if (l == NULL) {
-        return NULL;
-    } else if (l->data == value) {
-        List newHead = l->next;
-        free(l);
-        return listDelete(newHead, value);
-    } else {
-        List restOfList = l->next;
-        l->next = listDelete(restOfList, value);
-        return l;
-    }
+    return l;
 }
 
 /**
@@ -96,15 +72,5 @@ List listDelete(List l, int value) {
  * The function should return a pointer to the beginning of the updated list.
 */
 List listDeleteEvens(List l) {
-    if (l == NULL) {
-        return NULL;
-    } else if (l->data % 2 == 0) {
-        List newHead = l->next;
-        free(l);
-        return listDeleteEvens(newHead);
-    } else {
-        List restOfList = l->next;
-        l->next = listDeleteEvens(restOfList);
-        return l;
-    }
+    return l;
 }

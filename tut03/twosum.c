@@ -40,12 +40,5 @@ int main(void) {
  * Overall complexity; O(n^2)
 */
 bool twoSum(int *array, int n, int target) {
-    for (int i = 0; i < n; i++) {                   // O(n)
-        for (int j = i + 1; j < n; j++) {               // O(n)
-            if (array[i] + array[j] == target) {            // O(1)
-                return true;                                // O(1)
-            }                                           // O(n) * O(1) = O(n)
-        }                                           // O(n) * O(n) = O(n^2)
-    }
-    return false;                                   // O(1)
+    return false;
 }

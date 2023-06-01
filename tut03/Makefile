@@ -1,5 +1,5 @@
 CC = clang
-CFLAGS = -Wall -Werror -g -fsanitize=address,undefined,leak
+CFLAGS = -Wall -Werror -g -fsanitize=address,undefined
 
 .PHONY: all
 all: palindrome twosum polynomial permutation

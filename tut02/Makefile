@@ -1,5 +1,5 @@
-CC = gcc
-CFLAGS = -Wall -Werror -g
+CC = clang
+CFLAGS = -Wall -Werror -g -fsanitize=address,undefined
 
 .PHONY: all
 all: recursive iterative fib
