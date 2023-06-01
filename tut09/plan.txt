@@ -1,0 +1,27 @@
+bubble
+example 80, 10, 60, 30, 20, 70, 40, 50
+worst   50, 40, 30, 20, 10
+best    10, 20, 30, 40, 50
+stable  40, 10, 20, 30, 40, 50 
+
+insertion
+example 80, 10, 60, 30, 20, 70, 40, 50
+worst   50, 40, 30, 20, 10
+best    40, 10, 20, 30, 40, 50
+stable  40, 10, 20, 30, 40, 50 
+
+almost sorted 20, 30, 40, 50, 10
+
+selection
+example 80, 10, 60, 30, 20, 70, 40, 50
+stable  40, 50, 20, 30, 40, 10 
+
+merge
+example 1 6 8 3 4 5 7 2
+merge is n
+layers is nlogn
+
+quick
+partition
+partition is n
+layers depend on pivot
