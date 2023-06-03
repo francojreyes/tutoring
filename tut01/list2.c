@@ -8,5 +8,9 @@ struct list {
 };
 
 int listLength(struct list *list) {
-    return 0;
+    int size = 0;
+    for (struct node *curr = list->head; curr != NULL; curr = curr->next) {
+        size++;
+    }
+    return size;
 }
