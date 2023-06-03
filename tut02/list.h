@@ -1,4 +1,4 @@
-// Linked list interface
+// Linked struct node *interface
 // Franco Reyes, COMP2521 23T0 tut01
 
 #ifndef LIST_H
@@ -17,7 +17,7 @@ struct node {
 void listPrint(struct node *l);
 
 /**
- * Append a value to the end of a linked list 
+ * Append a value to the end of a linked list
  * The function should return a pointer to the beginning of the updated list.
 */
 struct node *listAppend(struct node *head, int value);
@@ -41,12 +41,12 @@ bool listIsSorted(struct node *head);
  * Delete the first instance of a value from a linked list, if it exists.
  * The function should return a pointer to the beginning of the updated list.
 */
-struct node *headistDelete(struct node *head, int value);
+struct node *listDelete(struct node *head, int value);
 
 /**
  * Delete all the even numbers from a linked list.
  * The function should return a pointer to the beginning of the updated list.
 */
-struct node *headistDeleteEvens(struct node *head);
+struct node *listDeleteEvens(struct node *head);
 
 #endif

@@ -26,7 +26,7 @@ void listPrint(struct node *head) {
 }
 
 /**
- * Append a value to the end of a linked struct node *
+ * Append a value to the end of a linked list
  * The function should return a pointer to the beginning of the updated list.
 */
 struct node *listAppend(struct node *head, int value) {
@@ -53,7 +53,7 @@ int listCountOdds(struct node *head) {
 }
 
 /**
- * Check whether a struct node *is sorted in ascending order
+ * Check whether a list is sorted in ascending order
 */
 bool listIsSorted(struct node *head) {
     return false;
