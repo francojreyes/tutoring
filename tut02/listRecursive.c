@@ -6,8 +6,8 @@
 
 #include "list.h"
 
-static List newNode(int value) {
-    List n = malloc(sizeof(struct node));
+static struct node *newNode(int value) {
+    struct node *n = malloc(sizeof(struct node));
     n->data = value;
     n->next = NULL;
     return n;
@@ -16,46 +16,46 @@ static List newNode(int value) {
 /**
  * Print the values of a linked list, space-separated
 */
-void listPrint(List l) {
-    if (l == NULL) {
+void listPrint(struct node *head) {
+    if (head == NULL) {
         printf("\n");
     } else {
-        printf("%d ", l->data);
-        listPrint(l->next);
+        printf("%d ", head->data);
+        listPrint(head->next);
     }
 }
 
 /**
- * Append a value to the end of a linked list 
+ * Append a value to the end of a linked struct node *
  * The function should return a pointer to the beginning of the updated list.
 */
-List listAppend(List l, int value) {
-    if (l == NULL) {
+struct node *listAppend(struct node *head, int value) {
+    if (head == NULL) {
         return newNode(value);
     } else {
-        l->next = listAppend(l->next, value);
-        return l;
+        head->next = listAppend(head->next, value);
+        return head;
     }
 }
 
 /**
  * Compute the length of a linked list
 */
-int listLength(List l) {
+int listLength(struct node *head) {
     return 0;
 }
 
 /**
  * Count the number of odd numbers in a linked list
 */
-int listCountOdds(List l) {
+int listCountOdds(struct node *head) {
     return 0;
 }
 
 /**
- * Check whether a list is sorted in ascending order
+ * Check whether a struct node *is sorted in ascending order
 */
-bool listIsSorted(List l) {
+bool listIsSorted(struct node *head) {
     return false;
 }
 
@@ -63,14 +63,14 @@ bool listIsSorted(List l) {
  * Delete the first instance of a value from a linked list, if it exists.
  * The function should return a pointer to the beginning of the updated list.
 */
-List listDelete(List l, int value) {
-    return l;
+struct node *listDelete(struct node *head, int value) {
+    return head;
 }
 
 /**
  * Delete all the even numbers from a linked list.
  * The function should return a pointer to the beginning of the updated list.
 */
-List listDeleteEvens(List l) {
-    return l;
+struct node *listDeleteEvens(struct node *head) {
+    return head;
 }

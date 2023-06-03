@@ -6,49 +6,47 @@
 
 #include <stdbool.h>
 
-typedef struct node {
+struct node {
 	int data;
 	struct node *next;
-} Node;
-
-typedef Node *List;
+};
 
 /**
  * Print the values of a linked list, space-separated
 */
-void listPrint(List l);
+void listPrint(struct node *l);
 
 /**
  * Append a value to the end of a linked list 
  * The function should return a pointer to the beginning of the updated list.
 */
-List listAppend(List l, int value);
+struct node *listAppend(struct node *head, int value);
 
 /**
  * Compute the length of a linked list
 */
-int listLength(List l);
+int listLength(struct node *head);
 
 /**
  * Count the number of odd numbers in a linked list
 */
-int listCountOdds(List l);
+int listCountOdds(struct node *head);
 
 /**
  * Check whether a list is sorted in ascending order
 */
-bool listIsSorted(List l);
+bool listIsSorted(struct node *head);
 
 /**
  * Delete the first instance of a value from a linked list, if it exists.
  * The function should return a pointer to the beginning of the updated list.
 */
-List listDelete(List l, int value);
+struct node *headistDelete(struct node *head, int value);
 
 /**
  * Delete all the even numbers from a linked list.
  * The function should return a pointer to the beginning of the updated list.
 */
-List listDeleteEvens(List l);
+struct node *headistDeleteEvens(struct node *head);
 
 #endif
