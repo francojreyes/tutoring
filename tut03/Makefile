@@ -18,4 +18,4 @@ permutation: permutation.c
 
 .PHONY: clean
 clean:
-	rm examples twosum polynomial permutation
+	rm -rf examples twosum polynomial permutation *.dSYM

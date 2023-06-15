@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -18,15 +19,9 @@ void func0(int n) {
 // Complexity: O( ? )
 void func1(int n) {
     int *arr = malloc(n * sizeof(int));
+
     arr[0] = 1;
-
-    for (int i = 1; i < n; i++) {
-        arr[i] = 2 * arr[i - 1];
-    }
-
-    for (int i = 0; i < n; i++) {
-        printf("arr[%d] = %d\n", i, arr[i]);
-    }
+    printf("%d\n", arr[0]);
 
     free(arr);
 }
@@ -119,7 +114,9 @@ int main(int argc, char **argv) {
     }
 
     int funcNum = atoi(argv[1]);
+    assert(funcNum >= 0 && funcNum <= 8);
     int n = atoi(argv[2]);
+    assert(n > 0);
     
     funcs[funcNum](n);
 
