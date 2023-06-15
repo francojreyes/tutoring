@@ -37,7 +37,7 @@ int main(void) {
 
 /**
  * Return whether or not the array contains two numbers that sum to the target
- * Overall complexity; O(n^2)
+ * Overall complexity: O( ? )
 */
 bool twoSum(int *array, int n, int target) {
     return false;
