@@ -3,7 +3,7 @@
 
 
 // Complexity: O( ? )
-int func0(int n) {
+void func0(int n) {
     char *result;
     if (n % 2 == 1) {
         result = "n is odd";
@@ -11,11 +11,12 @@ int func0(int n) {
         result = "n is even";
     }
     printf("%s\n", result);
+    return;
 }
 
 
 // Complexity: O( ? )
-int func1(int n) {
+void func1(int n) {
     int *arr = malloc(n * sizeof(int));
     arr[0] = 1;
 
@@ -32,7 +33,7 @@ int func1(int n) {
 
 
 // Complexity: O( ? )
-int func2(int n) {
+void func2(int n) {
     for (int i = 0; i < n; i++) {
         printf("%d\n", i);
     }
@@ -40,15 +41,15 @@ int func2(int n) {
 
 
 // Complexity: O( ? )
-int func3(int n) {
-    for (int i = 0; i < n; i *= 2) {
+void func3(int n) {
+    for (int i = 1; i < n; i *= 2) {
         printf("%d\n", i);
     }
 }
 
 
 // Complexity: O( ? )
-int func4(int n) {
+void func4(int n) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             printf("(%d, %d)\n", i, j);
@@ -58,7 +59,7 @@ int func4(int n) {
 
 
 // Complexity: O( ? )
-int func5(int n) {
+void func5(int n) {
     for (int i = 0; i < n; i++) {
         for (int j = i; j < n; j++) {
             printf("(%d, %d)\n", i, j);
@@ -68,7 +69,7 @@ int func5(int n) {
 
 
 // Complexity: O( ? )
-int func6(int n) {
+void func6(int n) {
     int count = 0;
     while (count < n) {
         int random = rand() % n;
@@ -81,27 +82,45 @@ int func6(int n) {
 
 
 // Complexity: O( ? )
-int func7(int n) {
+void func7(int n) {
     func4(n);
 }
 
 
 // Complexity: O( ? )
-int func8(int n) {
-    func4(n);
-}
-
-// Complexity: O( ? )
-int func9(int n) {
-    if (n <= 0) {
+void func8(int n) {
+    if (n < 0) {
         return;
     } else {
-        func9(n - 1);
+        func8(n - 1);
         printf("%d\n", n);
     }
 }
 
 
-int main(void) {
+typedef void (*func)(int);
+
+int main(int argc, char **argv) {
+    func funcs[10] = {
+        func0,
+        func1,
+        func2,
+        func3,
+        func4,
+        func5,
+        func6,
+        func7,
+        func8,
+    };
+
+    if (argc != 3) {
+        printf("Usage: ./examples <func num> <n>\n");
+        return 1;
+    }
+
+    int funcNum = atoi(argv[1]);
+    int n = atoi(argv[2]);
+    
+    funcs[funcNum](n);
 
 }
