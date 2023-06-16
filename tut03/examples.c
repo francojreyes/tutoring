@@ -3,49 +3,70 @@
 #include <stdlib.h>
 
 
-// Complexity: O( ? )
+// Complexity: O( 1 )
+// 5 operations = 5 * 1
 void func0(int n) {
-    char *result;
-    if (n % 2 == 1) {
-        result = "n is odd";
+    char *result;               // 0
+    if (n % 2 == 1) {           // 1 calulation, 1 check
+        result = "n is odd";    // 1 assignment
     } else {
-        result = "n is even";
+        result = "n is even";   // 1 assignment
     }
-    printf("%s\n", result);
-    return;
+    printf("%s\n", result);     // 1 print
+    return;                     // 1 return
 }
 
 
-// Complexity: O( ? )
+// Complexity: O( 1 )
 void func1(int n) {
-    int *arr = malloc(n * sizeof(int));
+    int *arr = malloc(n * sizeof(int)); // O(1) malloc
 
-    arr[0] = 1;
-    printf("%d\n", arr[0]);
+    arr[0] = 1;                         // 1 index, 1 assign
+    printf("%d\n", arr[0]);             // 1 index, 1 print
 
-    free(arr);
+    free(arr);                          // O(1) free
 }
 
 
-// Complexity: O( ? )
+// Complexity: O( n )
+// Total operations: 3n
 void func2(int n) {
-    for (int i = 0; i < n; i++) {
-        printf("%d\n", i);
+    // 1 assignment
+    // n + 1 checks
+    // n increments
+
+    // n = 3
+    // initialise to 0, check 0 < n
+    // inc to 1, check 1 < n
+    // inc 2, check 2 < n
+    // inc to 3, check 3 < n
+    for (int i = 0; i < n; i++) { // 2n + 2
+        printf("%d\n", i);        // O(1) * n
     }
 }
+// Complexity of a loop:
+// Number of iterations * complexity of body
+// n * O(1) = O(n)
 
 
-// Complexity: O( ? )
+// Complexity: O( logn )
 void func3(int n) {
+    // Number of iterations * complexity of body
+    // O(logn) * O(1)
+    // 1 * 2^? = n
+    // 2^? = n
+    // ? = log_2(n)
     for (int i = 1; i < n; i *= 2) {
         printf("%d\n", i);
     }
 }
 
 
-// Complexity: O( ? )
+// Complexity: O( n^2 )
 void func4(int n) {
+    // n it * O(n) body = O(n^2)
     for (int i = 0; i < n; i++) {
+        // n it * O(1) body = O(n)
         for (int j = 0; j < n; j++) {
             printf("(%d, %d)\n", i, j);
         }
@@ -53,9 +74,11 @@ void func4(int n) {
 }
 
 
-// Complexity: O( ? )
+// Complexity: O( n^2 )
 void func5(int n) {
+    // n it * O(n) body = O(n^2)
     for (int i = 0; i < n; i++) {
+        // O(1) body * n iterations = O(n)
         for (int j = i; j < n; j++) {
             printf("(%d, %d)\n", i, j);
         }
@@ -63,11 +86,12 @@ void func5(int n) {
 }
 
 
-// Complexity: O( ? )
+// Complexity: O( n )
 void func6(int n) {
     int count = 0;
     while (count < n) {
         int random = rand() % n;
+        printf("Iterating %d times\n", random);
         for (int i = 0; i < random && count < n; i++) {
             printf("%d\n", count);
             count++;
@@ -76,13 +100,17 @@ void func6(int n) {
 }
 
 
-// Complexity: O( ? )
+// Complexity: O( n^2 )
 void func7(int n) {
     func4(n);
 }
 
 
-// Complexity: O( ? )
+// Complexity: O( n )
+// Number of recursions
+// * body of recursion (excluding more recursions)
+// O(1) body * (n + 2) recursions
+// = n + 2 = O(n)
 void func8(int n) {
     if (n < 0) {
         return;

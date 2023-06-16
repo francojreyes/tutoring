@@ -4,6 +4,7 @@
 #include <math.h>
 
 int evalPolynomial(int *p, int n, int x);
+int evalPolynomial2(int *p, int n, int x);
 void printPolynomial(int *p, int n);
 
 int main(void) {
@@ -21,7 +22,7 @@ int main(void) {
 
     // Print the result
     printPolynomial(p, n);
-    printf("p(%d) = %d\n", x, evalPolynomial(p, n, x));
+    printf("p(%d) = %d\n", x, evalPolynomial2(p, n, x));
 
     free(p);
 }
@@ -32,8 +33,27 @@ int main(void) {
  * For example, if p = {1, 2, 3}, p(x) = 3x^2 + 2x + 1
 */
 int evalPolynomial(int *p, int n, int x) {
-    return 0;
+    int result = 0;
+    // (n + 1) iterations * O(n) = O(n^2)
+    for (int i = 0; i <= n; i++) {
+        // pow is O(n)
+        result += p[i] * pow(x, i);
+    }
+    return result;
 }
+
+int evalPolynomial2(int *p, int n, int x) {
+    int result = 0;
+    // n iterations * O(1) = O(n)
+    for (int i = n; i >= 0; i--) {
+        result += p[i];
+        if (i != 0) {
+            result *= x;
+        }
+    }
+    return result;
+}
+
 
 /**
  * Prints a polynomial

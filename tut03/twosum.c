@@ -37,8 +37,18 @@ int main(void) {
 
 /**
  * Return whether or not the array contains two numbers that sum to the target
- * Overall complexity: O( ? )
+ * Overall complexity: O( n^2 )
 */
 bool twoSum(int *array, int n, int target) {
+    // O(n) iterations * O(n) body = O(n^2)
+    for (int i = 0; i < n; i++) {
+        // O(n) iterations * O(1) body = O(n)
+        for (int j = i + 1; j < n; j++) {
+            // O(1)
+            if (array[i] + array[j] ==  target) {
+                return true;
+            }
+        }
+    }
     return false;
 }
