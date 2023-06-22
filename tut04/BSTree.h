@@ -8,6 +8,7 @@ typedef struct BSTNode *BSTree;
  * Frees the tree
 */
 void BSTreeFree(BSTree t);
+
 /**
  * Insert a value into a tree
 */
