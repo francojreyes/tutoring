@@ -58,14 +58,30 @@ static BSTree newNode(int value) {
  * Count the total number of nodes in a tree
 */
 int BSTreeNumNodes(BSTree t) {
-	return 0;
+	if (t == NULL) {
+		return 0;
+	} else {
+		int nodesInLeft = BSTreeNumNodes(t->left);   // L
+		int nodesInRight = BSTreeNumNodes(t->right); // R
+		return nodesInLeft + nodesInRight + 1;       // N
+	}
 }
 
 /**
  * Counts the number of odd values in a tree
 */
 int BSTreeCountOdds(BSTree t) {
-	return 0;
+	if (t == NULL) {
+		return 0;
+	} else {
+		int leftOdd = BSTreeCountOdds(t->left);   // L
+		int rightOdd = BSTreeCountOdds(t->right); // R
+		return leftOdd + rightOdd + (t->value % 2);
+	}
+}
+
+int max(int a, int b) {
+	return a > b ? a : b;
 }
 
 /**
@@ -74,15 +90,29 @@ int BSTreeCountOdds(BSTree t) {
  * The path length is a count of the number of links (edges) on the path.
 */
 int BSTreeHeight(BSTree t) {
-	return 0;
+	if (t == NULL) {
+		return -1;
+	} else {
+		int lh = BSTreeHeight(t->left);
+		int rh = BSTreeHeight(t->right);
+		return (lh > rh ? lh : rh) + 1;
+	}
 }
+
+
 
 /**
  * Count number of internal nodes in a given tree.
  * An internal node is a node with at least one non-empty subtree.
 */
 int BSTreeCountInternal(BSTree t) {
-	return 0;
+	if (t == NULL || (t->left == NULL && t->right == NULL)) {
+		return 0;
+	} else {
+		int li = BSTreeCountInternal(t->left);
+		int ri = BSTreeCountInternal(t->right);
+		return li + ri + 1;
+	}
 }
 
 /**
@@ -91,7 +121,17 @@ int BSTreeCountInternal(BSTree t) {
  * The level of the root node is zero. 
 */
 int BSTreeNodeLevel(BSTree t, int key) {
-	return 0;
+	if (t == NULL) {
+		return -1;
+	} else if (t->value == key) {
+		return 0;
+	} else if (key > t->value) {
+		int rl = BSTreeNodeLevel(t->right, key);
+		return rl == -1 ? -1 : rl + 1;
+	} else if (key < t->value) {
+		int ll = BSTreeNodeLevel(t->left, key);
+		return ll == -1 ? -1 : ll + 1;
+	}
 }
 
 /**
