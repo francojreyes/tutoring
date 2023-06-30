@@ -128,7 +128,7 @@ int BSTreeNodeLevel(BSTree t, int key) {
 	} else if (key > t->value) {
 		int rl = BSTreeNodeLevel(t->right, key);
 		return rl == -1 ? -1 : rl + 1;
-	} else if (key < t->value) {
+	} else { // if (key < t->value)
 		int ll = BSTreeNodeLevel(t->left, key);
 		return ll == -1 ? -1 : ll + 1;
 	}
@@ -139,14 +139,42 @@ int BSTreeNodeLevel(BSTree t, int key) {
  * This function should avoid visiting nodes that it doesn't have to visit
 */
 int BSTreeCountGreater(BSTree t, int val) {
-	return 0;
+	if (t == NULL) {
+		return 0;
+	} else if (t->value == val) {
+		return BSTreeCountGreater(t->right, val);
+	} else if (t->value > val) {
+		return BSTreeCountGreater(t->left, val)
+			 + BSTreeCountGreater(t->right, val) + 1;
+	} else { // if (t->value < val)
+		return BSTreeCountGreater(t->right, val);
+	}
 }
 
 /**
  * Returns the height of a given basic binary tree if it is height-balanced.
  * Otherwise, if the given binary tree is not height-balanced, the function
  * returns NOT_HEIGHT_BALANCED.
+ * 
+ * Tree is height balanced if:
+ * 	for all nodes n in the tree
+ * 		abs(height(left(n)) - height(right(n))) <= 1
 */
 int isHeightBalanced(BSTree t) {
-	return 0;
+	if (t == NULL) {
+		return -1;
+	} else {
+		int lh = isHeightBalanced(t->left);
+		int rh = isHeightBalanced(t->right);
+
+		if (lh == NOT_HEIGHT_BALANCED || rh == NOT_HEIGHT_BALANCED) {
+			return NOT_HEIGHT_BALANCED;
+		}
+		
+		if (abs(lh - rh) <= 1) {
+			return (lh > rh ? lh : rh) + 1;
+		} else {
+			return NOT_HEIGHT_BALANCED;
+		}
+	}
 }
