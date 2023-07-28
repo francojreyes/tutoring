@@ -42,5 +42,19 @@ int main(void) {
 }
 
 void sort(Student students[], int n) {
+    
+}
 
+void bubbleSort(int a[], int lo, int hi) {
+    int i, j, nswaps;
+    for (i = hi; i > lo; i--) {
+        nswaps = 0;
+        for (j = lo; j < i; j++) {
+            if (less(a[j+1], a[j])) {
+                swap(a[j+1], a[j]);
+                nswaps++;
+            }
+        }
+        if (nswaps == 0) break;
+    }
 }
