@@ -28,6 +28,11 @@ void PqFree(Pq pq);
 void PqInsert(Pq pq, int item);
 
 /**
+ * Returns the smallest item in the priority queue without removing it.
+ */
+int PqPeek(Pq pq);
+
+/**
  * Removes and returns the smallest item from the priority queue. If
  * multiple items are the smallest, one of them will be removed.
  * Complexity: O(log n)
