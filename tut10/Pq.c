@@ -71,6 +71,11 @@ static void fixUp(Pq pq, int i) {
 	}
 }
 
+int PqPeek(Pq pq) {
+	assert(pq->size > 0);
+    return pq->items[1];
+}
+
 int PqExtract(Pq pq) {
 	assert(pq->size > 0);
 	
