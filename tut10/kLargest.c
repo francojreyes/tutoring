@@ -24,5 +24,24 @@ int main(void) {
  * elements into `res`. Returns how many items were placed into `res`.
  */
 int kLargest(int *arr, int n, int *res, int k) {
-    return 0;
+    Pq heap = PqNew();
+
+    for (int i = 0; i < n; i++) {
+        if (PqSize(heap) < k) {
+            PqInsert(heap, arr[i]);
+        } else if (arr[i] > PqPeek(heap)) {
+            PqExtract(heap);
+            PqInsert(heap, arr[i]);
+        }
+
+        printf("\nAfter considering %d:\n", arr[i]);
+        PqShow(heap);
+    }
+
+    int num = 0;
+    while (num < k && !PqIsEmpty(heap)) {
+        res[num++] = PqExtract(heap);
+    }
+
+    return num;
 }
