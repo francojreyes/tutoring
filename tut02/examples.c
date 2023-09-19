@@ -3,59 +3,82 @@
 #include <stdlib.h>
 
 
-// Complexity: O( ? )
+// Complexity: 7 x 1 = O( 1 )
 void func0(int n) {
-    char *result;
-    if (n % 2 == 1) {
-        result = "n is odd";
+    char *result;             // 1
+    if (n % 2 == 1) {         // 1 + 1
+        result = "n is odd";  // 1
     } else {
-        result = "n is even";
+        result = "n is even"; // 1
     }
-    printf("%s\n", result);
-    return;
+    printf("%s\n", result);   // 1
+    return;                   // 1
 }
 
 
-// Complexity: O( ? )
+// Complexity: 8 x 1 = O( 1 )
 void func1(int n) {
+    // 1 (mult) + 1 (malloc) + 1 (assign) = 3
     int *arr = malloc(n * sizeof(int));
 
+    // 1 (access) + 1 (assign) = 2
     arr[0] = 1;
+
+    // 1 (access) + 1 (print ) = 2
     printf("%d\n", arr[0]);
 
+    // 1 (free)
     free(arr);
 }
 
 
-// Complexity: O( ? )
+// Complexity: O( n )
 void func2(int n) {
+    // number of times * complexity of inside
+    // n * O(1)
     for (int i = 0; i < n; i++) {
         printf("%d\n", i);
     }
 }
 
 
-// Complexity: O( ? )
+// Complexity: O( logn )
 void func3(int n) {
+    // number of times * complexity of inside
+    // logn * O(1)
+    // 2^x = n
+    // log2(2^x) = log2(n)
+    // x = log2(n)
     for (int i = 1; i < n; i *= 2) {
         printf("%d\n", i);
     }
 }
 
 
-// Complexity: O( ? )
+// Complexity: O( n^2 )
 void func4(int n) {
+    // number of times * complexity of inside
+    // n * O(n) = O(n^2)
     for (int i = 0; i < n; i++) {
+
+        // number of times * complexity of inside
+        // n * O(1) = O(n)
         for (int j = 0; j < n; j++) {
             printf("(%d, %d)\n", i, j);
         }
+
+
+
     }
 }
 
 
-// Complexity: O( ? )
+// Complexity: O( n^2 )
 void func5(int n) {
     for (int i = 0; i < n; i++) {
+
+        // number of times * complexity of inside
+        // n - i = O(n) * O(1) = O(n)
         for (int j = i; j < n; j++) {
             printf("(%d, %d)\n", i, j);
         }
