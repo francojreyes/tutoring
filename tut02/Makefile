@@ -2,26 +2,23 @@ CC = clang
 CFLAGS = -Wall -Werror -g -fsanitize=address,undefined
 
 .PHONY: all
-all: recursive iterative fib
+all: list listContainer examples twosum palindrome
 
-recursive: main.c listRecursive.o
-	$(CC) $(CFLAGS) -o recursive main.c listRecursive.o
+list: list.c
+	$(CC) $(CFLAGS) -o list list.c
 
-listRecursive.o: list.h listRecursive.c
-	$(CC) $(CFLAGS) -c listRecursive.c
+listContainer: listContainer.c
+	$(CC) $(CFLAGS) -o listContainer listContainer.c
 
-iterative: main.c listIterative.o
-	$(CC) $(CFLAGS) -o iterative main.c listIterative.o
+examples: examples.c
+	$(CC) $(CFLAGS) -o examples examples.c
 
-listIterative.o: list.h listIterative.c
-	$(CC) $(CFLAGS) -c listIterative.c
+twosum: twosum.c
+	$(CC) $(CFLAGS) -o twosum twosum.c
 
-fib: fib.c
-	$(CC) $(CFLAGS) -o fib fib.c
-
-# pow: pow.c
-# 	$(CC) $(CFLAGS) -o pow pow.c
+palindrome: palindrome.c
+	$(CC) $(CFLAGS) -o palindrome palindrome.c
 
 .PHONY: clean
 clean:
-	rm *.o fib iterative recursive
+	rm -rf *.dSYM *.o list listContainer examples twosum palindrome
