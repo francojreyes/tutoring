@@ -1,18 +1,18 @@
 #include <stdio.h>
 
-#include "BSTree.h"
+#include "BST.h"
 
 int main(void) {
-    BSTree t = NULL;
-    t = BSTreeInsert(t, 4);
-    t = BSTreeInsert(t, 2);
-    t = BSTreeInsert(t, 6);
-    t = BSTreeInsert(t, 5);
-    t = BSTreeInsert(t, 1);
-    t = BSTreeInsert(t, 7);
-    t = BSTreeInsert(t, 3);
+    BST t = NULL;
+    t = BSTInsert(t, 4);
+    t = BSTInsert(t, 2);
+    t = BSTInsert(t, 6);
+    t = BSTInsert(t, 5);
+    t = BSTInsert(t, 1);
+    t = BSTInsert(t, 7);
+    t = BSTInsert(t, 3);
 
-    printf("%d\n", BSTreeNumNodes(t));
+    printf("%d\n", BSTCountOdds(t));
 
-    BSTreeFree(t);
+    BSTFree(t);
 }
