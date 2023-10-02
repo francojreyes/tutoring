@@ -11,6 +11,3 @@
 |**naive quick**  |          |          |           |           |           |           |
 |**mo3 quick**    |          |          |           |           |           |           |
 |**random quick** |          |          |           |           |           |           |
-
-a[0] = 2;
-a[0] = a[1];

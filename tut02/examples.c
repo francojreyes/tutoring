@@ -1,30 +1,33 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 
-// Complexity: 7 x 1 = O( 1 )
+
+// Complexity: 6 prim ops = 6 * 1 = O(1)
 void func0(int n) {
-    char *result;             // 1
-    if (n % 2 == 1) {         // 1 + 1
-        result = "n is odd";  // 1
+    char *result;               
+    if (n % 2 == 1) {         // 1 (mod) + 1 (equals)      
+        result = "n is odd"; // 1 (write)
     } else {
-        result = "n is even"; // 1
+        result = "n is even"; // 1 (write)
     }
-    printf("%s\n", result);   // 1
-    return;                   // 1
+    printf("%s\n", result); // 1 (print)
+    return;                 // 1 (return)
 }
 
+// 
 
-// Complexity: 8 x 1 = O( 1 )
+// Complexity: 9 * 1 = O(1)
 void func1(int n) {
-    // 1 (mult) + 1 (malloc) + 1 (assign) = 3
-    int *arr = malloc(n * sizeof(int));
+    // 1 (mult) + 1 (malloc) + 1 (write)
+    int *arr = malloc(n * sizeof(int));  
 
-    // 1 (access) + 1 (assign) = 2
-    arr[0] = 1;
+    // 1 (index) + 1 (write)
+    arr[3] = 1;
 
-    // 1 (access) + 1 (print ) = 2
+    // 1 (index) + 1 (read) + 1 (print)
     printf("%d\n", arr[0]);
 
     // 1 (free)
@@ -34,8 +37,8 @@ void func1(int n) {
 
 // Complexity: O( n )
 void func2(int n) {
-    // number of times * complexity of inside
-    // n * O(1)
+    // number of times the loop runs * the complexity of the inside
+    // n * O(1) = O(n)
     for (int i = 0; i < n; i++) {
         printf("%d\n", i);
     }
@@ -44,7 +47,7 @@ void func2(int n) {
 
 // Complexity: O( logn )
 void func3(int n) {
-    // number of times * complexity of inside
+    // number of times the loop runs * the complexity of the inside
     // logn * O(1)
     // 2^x = n
     // log2(2^x) = log2(n)
@@ -55,29 +58,24 @@ void func3(int n) {
 }
 
 
-// Complexity: O( n^2 )
+// Complexity: 
 void func4(int n) {
-    // number of times * complexity of inside
-    // n * O(n) = O(n^2)
+    // number of times the loop runs * the complexity of the inside
+    // O(n) * O(n) = O(n^2)
     for (int i = 0; i < n; i++) {
-
-        // number of times * complexity of inside
+        // number of times the loop runs * the complexity of the inside
         // n * O(1) = O(n)
         for (int j = 0; j < n; j++) {
             printf("(%d, %d)\n", i, j);
         }
-
-
-
     }
 }
 
 
-// Complexity: O( n^2 )
+// Complexity: O( )
 void func5(int n) {
     for (int i = 0; i < n; i++) {
-
-        // number of times * complexity of inside
+        // number of times the loop runs * the complexity of the inside
         // n - i = O(n) * O(1) = O(n)
         for (int j = i; j < n; j++) {
             printf("(%d, %d)\n", i, j);
@@ -92,20 +90,22 @@ void func6(int n) {
     while (count < n) {
         int random = rand() % n;
         for (int i = 0; i < random && count < n; i++) {
-            printf("%d\n", count);
+            printf("%d (%d)\n", count, i);
             count++;
         }
+        printf("\n");
     }
 }
 
 
-// Complexity: O( ? )
+// Complexity: O( n^2 )
 void func7(int n) {
     func4(n);
 }
 
 
 // Complexity: O( ? )
+// number of recursions * complexity of inside (excluding the recursion)
 void func8(int n) {
     if (n < 0) {
         return;
@@ -119,6 +119,8 @@ void func8(int n) {
 typedef void (*func)(int);
 
 int main(int argc, char **argv) {
+    srand(time(NULL));
+
     func funcs[10] = {
         func0,
         func1,
