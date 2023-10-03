@@ -27,7 +27,7 @@ int BSTCountInternal(BST t);
 
 /**
  * Returns the level of the node containing a given key if such a node exists,
- * otherwise the function returns -1 (when a given key is not in the binary search tree).
+ * otherwise the function returns -1 (when a given key is not in the bst).
  * The level of the root node is zero. 
 */
 int BSTNodeLevel(BST t, int key);
