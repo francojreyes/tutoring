@@ -80,7 +80,12 @@ void func6(int n) {
 
 // Complexity: O( n^2 )
 void func7(int n) {
-    func4(n);
+    for (int i = 0; i < n; i++) {
+        func2(i);
+        for (int j = 0; j < n; j++) {
+            printf("(%d, %d)\n", i, j);
+        }
+    }
 }
 
 
