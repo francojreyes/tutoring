@@ -76,8 +76,7 @@ void func5(int n) {
     }
 }
 
-
-// Complexity: O( n )
+// Complexity: O( )
 void func6(int n) {
     int count = 0;
     while (count < n) {
@@ -106,9 +105,7 @@ void func7(int n) {
 }
 
 
-// Complexity: O( n )
-// number of times it recurses * complexity of function excluding the recursion
-// (n + 2) * O(1)
+// Complexity: O( )
 void func8(int n) {
     if (n < 0) {
         return;
