@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 
 // Complexity: 6 = 6 * 1 = O( 1 )
@@ -76,7 +77,7 @@ void func5(int n) {
     }
 }
 
-// Complexity: O( )
+// Complexity: O( n^2 )
 void func6(int n) {
     int count = 0;
     while (count < n) {
@@ -106,6 +107,9 @@ void func7(int n) {
 
 
 // Complexity: O( )
+// loops = number of times loop runs * complexity of body
+// recursion = number of recursive calls * complexity of function (excluding recursion)
+// (n + 2) = O(n) * O(1) = O(n)
 void func8(int n) {
     if (n < 0) {
         return;
@@ -119,6 +123,8 @@ void func8(int n) {
 typedef void (*func)(int);
 
 int main(int argc, char **argv) {
+    srand(time(NULL));
+
     func funcs[10] = {
         func0,
         func1,
