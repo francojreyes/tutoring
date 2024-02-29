@@ -5,66 +5,48 @@
 
 
 
-// Complexity: 6 prim ops = 6 * 1 = O(1)
+// Complexity: O( ? )
 void func0(int n) {
     char *result;               
-    if (n % 2 == 1) {         // 1 (mod) + 1 (equals)      
-        result = "n is odd"; // 1 (write)
+    if (n % 2 == 1) {
+        result = "n is odd";
     } else {
-        result = "n is even"; // 1 (write)
+        result = "n is even";
     }
-    printf("%s\n", result); // 1 (print)
-    return;                 // 1 (return)
+    printf("%s\n", result);
+    return;
 }
 
-// 
-
-// Complexity: 9 * 1 = O(1)
+// Complexity: O( ? )
 void func1(int n) {
-    // 1 (mult) + 1 (malloc) + 1 (write)
-    int *arr = malloc(n * sizeof(int));  
+    int *arr = malloc(n * sizeof(int));
 
-    // 1 (index) + 1 (write)
     arr[3] = 1;
-
-    // 1 (index) + 1 (read) + 1 (print)
     printf("%d\n", arr[0]);
 
-    // 1 (free)
     free(arr);
 }
 
 
-// Complexity: O( n )
+// Complexity: O( ? )
 void func2(int n) {
-    // number of times the loop runs * the complexity of the inside
-    // n * O(1) = O(n)
     for (int i = 0; i < n; i++) {
         printf("%d\n", i);
     }
 }
 
 
-// Complexity: O( logn )
+// Complexity: O( ? )
 void func3(int n) {
-    // number of times the loop runs * the complexity of the inside
-    // logn * O(1)
-    // 2^x = n
-    // log2(2^x) = log2(n)
-    // x = log2(n)
     for (int i = 1; i < n; i *= 2) {
         printf("%d\n", i);
     }
 }
 
 
-// Complexity: 
+// Complexity: O( ? )
 void func4(int n) {
-    // number of times the loop runs * the complexity of the inside
-    // O(n) * O(n) = O(n^2)
     for (int i = 0; i < n; i++) {
-        // number of times the loop runs * the complexity of the inside
-        // n * O(1) = O(n)
         for (int j = 0; j < n; j++) {
             printf("(%d, %d)\n", i, j);
         }
@@ -72,11 +54,9 @@ void func4(int n) {
 }
 
 
-// Complexity: O( )
+// Complexity: O( ? )
 void func5(int n) {
     for (int i = 0; i < n; i++) {
-        // number of times the loop runs * the complexity of the inside
-        // n - i = O(n) * O(1) = O(n)
         for (int j = i; j < n; j++) {
             printf("(%d, %d)\n", i, j);
         }
@@ -105,7 +85,6 @@ void func7(int n) {
 
 
 // Complexity: O( ? )
-// number of recursions * complexity of inside (excluding the recursion)
 void func8(int n) {
     if (n < 0) {
         return;

@@ -59,18 +59,7 @@ static struct node *newNode(int value) {
  * Counts the number of odd values in a tree
 */
 int BSTCountOdds(BST t) {
-	if (t = NULL) {
-		return 0;
-	}
-
-	int leftOdds = BSTCountOdds(t->left);
-	int rightOdds = BSTCountOdds(t->right);
-
-	if (t->value % 2) {
-		return leftOdds + rightOdds + 1;
-	} else {
-		return leftOdds + rightOdds;
-	}
+    return 0;
 }
 
 /**
@@ -78,13 +67,7 @@ int BSTCountOdds(BST t) {
  * An internal node is a node with at least one non-empty subtree.
 */
 int BSTCountInternal(BST t) {
-	if (t = NULL || (t->right == NULL && t->left == NULL)) {
-		return 0;
-	}
-
-	int leftInternal = BSTCountInternal(t->left);
-	int rightInternal = BSTCountInternal(t->right);
-	return leftInternal + rightInternal + 1;
+	return 0;
 }
 
 /**
@@ -101,7 +84,5 @@ int BSTNodeLevel(BST t, int key) {
  * This function should avoid visiting nodes that it doesn't have to visit
 */
 int BSTCountGreater(BST t, int val) {
-	if (val > t->value) {
-		
-	}
+	return 0;
 }
