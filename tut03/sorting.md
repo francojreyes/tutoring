@@ -8,6 +8,6 @@
 | **insertion**    | n      | n^2     | n^2    | almost sorted - n                                               | Yes       | Yes - if don't swap equal |
 | **select**       | n^2    | n^2     | n^2    |                                                                 | No        | No                        |
 | **merge**        | nlogn  | nlogn   | nlogn  |                                                                 | No        | Yes - if prio left half   |
-| **naive quick**  | n^2    | nlogn   | n^2    |                                                                 | No        | No                        |
+| **naive quick**  | n^2    | n^2     | nlogn  |                                                                 | No        | No                        |
 | **mo3 quick**    | nlogn  | nlogn   | nlogn  |                                                                 | No        | No                        |
 | **random quick** | nlogn  | nlogn   | nlogn  | non-deterministic - different results if you run multiple times | No        | No                        |
