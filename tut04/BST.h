@@ -1,7 +1,5 @@
 // Interface for BST ADT
 
-#define NOT_HEIGHT_BALANCED -99
-
 typedef struct node *BST;
 
 /**

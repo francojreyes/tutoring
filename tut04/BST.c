@@ -59,19 +59,19 @@ static struct node *newNode(int value) {
  * Counts the number of odd values in a tree
 */
 int BSTCountOdds(BST t) {
-    // base case
+    // Base case
     if (t == NULL) {
         return 0;
     }
 
-    // recursive case
-    int leftOdds = BSTCountOdds(t->left);
-    int rightOdds = BSTCountOdds(t->right);
+    // Recursive case
+    int oddsInLeft = BSTCountOdds(t->left);
+    int oddsInRight = BSTCountOdds(t->right);
 
     if (t->value % 2 == 1) {
-        return leftOdds + rightOdds + 1;
+        return oddsInLeft + oddsInRight + 1;
     } else {
-        return leftOdds + rightOdds;
+        return oddsInLeft + oddsInRight;
     }
 }
 
@@ -80,14 +80,16 @@ int BSTCountOdds(BST t) {
  * An internal node is a node with at least one non-empty subtree.
 */
 int BSTCountInternal(BST t) {
+    // Base cases
     if (t == NULL || (t->left == NULL && t->right == NULL)) {
         return 0;
     }
 
     // Recursive case
-    int leftInternal = BSTCountInternal(t->left);
-    int rightInternal = BSTCountInternal(t->right);
-	return leftInternal + rightInternal + 1;
+    int internalInLeft = BSTCountInternal(t->left);
+    int internalInRight = BSTCountInternal(t->right);
+
+    return internalInLeft + internalInRight + 1;
 }
 
 /**
@@ -96,10 +98,11 @@ int BSTCountInternal(BST t) {
  * The level of the root node is zero. 
 */
 int BSTNodeLevel(BST t, int key) {
-    // Base case
+    // Base cases
     if (t == NULL) {
         return -1;
     }
+
     if (t->value == key) {
         return 0;
     }
@@ -108,12 +111,11 @@ int BSTNodeLevel(BST t, int key) {
     int childLevel;
     if (key < t->value) {
         childLevel = BSTNodeLevel(t->left, key);
-    } else {
+    } else { // if (key > t->value)
         childLevel = BSTNodeLevel(t->right, key);
     }
 
-    // (condition) ? (val if true) : (val if false)
-	return childLevel == -1 ? -1 : childLevel + 1;
+    return childLevel == -1 ? -1 : childLevel + 1;
 }
 
 /**
@@ -121,5 +123,15 @@ int BSTNodeLevel(BST t, int key) {
  * This function should avoid visiting nodes that it doesn't have to visit
 */
 int BSTCountGreater(BST t, int val) {
-	return 0;
+    // Base case
+    if (t == NULL) {
+        return 0;
+    }
+
+    // Recursive case
+    if (t->value <= val) {
+        return BSTCountGreater(t->right, val);
+    } else { // t->value > val
+        return BSTCountGreater(t->left, val) + BSTCountGreater(t->right, val) + 1;
+    }
 }
