@@ -1,24 +1,49 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node {
-    int data;
-    struct Node *next;
+struct node {
+	int data;
+	struct node *next;
 };
 
-void freeList(struct Node *head) {
-	if (head == NULL) {
-	return;
-	}
-	// Frees the list by iterating through the list, using a temporary element and freeing the elements by using free (hopefully this comment is useful and helps out)
-	struct Node *Temp = head;
-	while (head != NULL) {
-	    Temp = head;
-	    head = head->next;
-	    free(Temp);
-	}
+typedef struct node *Node;
+
+struct node *listAppend(struct node *head, int data);
+void printList(struct node *node);
+void freeList(struct node *head);
+
+int main() {
+	struct node *head = NULL;
+	head = listAppend(head, 1);
+	head = listAppend(head, 2);
+	head = listAppend(head, 3);
+	head = listAppend(head, 4);
+	printList(head);
+	freeList(head);
+	return 0;
 }
-void print_list(struct Node *node) {
+
+// Appends a node to the end of the list
+struct node *listAppend(struct node *head, int data) {
+    struct node *newNode = malloc(sizeof(struct node));
+    newNode->data = data;
+    newNode->next = NULL;
+
+    if (head == NULL) {
+        head = newNode;
+    } else {
+        struct node *lastNode = head;
+        while (lastNode->next != NULL) {
+            lastNode = lastNode->next;
+        }
+        lastNode->next = newNode;
+    }
+
+    return head;
+}
+
+// Prints the list
+void printList(struct node *node) {
     while (node->next != NULL) {
         printf("%d -> ", node->data);
         node = node->next;
@@ -26,31 +51,18 @@ void print_list(struct Node *node) {
     printf("%d\n", node->data);
     return;
 }
-struct Node *add(struct Node *a, int data) {
-    // malloc the node
-    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
-    // set the node's data field
-    newNode->data = data;
-    // set the node's next field to NULL
-    newNode->next = NULL;
-	if (a == NULL) {
-		a = newNode;
-	} else {
-        struct Node *lastNode = a;
-        while (lastNode->next != NULL) {
-            lastNode = lastNode->next;
-        }
-        lastNode->next = newNode;
-	}
-	return a;
-}
-int main() {
-	struct Node *head = NULL;
-	head = add(head, 1);
-	head = add(head, 2);
-	head = add(head, 3);
-	head = add(head, 4);
-	print_list(head);
-	freeList(head);
-	return 0;
+
+// Frees the list
+void freeList(struct node *head) {
+    if (head == NULL) {
+        return;
+    }
+
+    // Iterate through and free all nodes
+    struct node *toDelete = head;
+    while (head != NULL) {
+        toDelete = head;
+        head = head->next;
+        free(toDelete);
+    }
 }
