@@ -12,8 +12,11 @@ We start with a list of Combo sequences and the attack they map to, e.g.:
 We then get the sequence of buttons the user pressed, one by one, e.g.
     X,  Y,  X,  X,  Y
 
-After each button press we want to know - what's the best (longest) Combo
-the player can do? For example, for the input above:
+A player can do a Combo if a suffix of their input matches that Combo.
+After each button press we want to know - what is the best (longest)
+Combo the player can do?
+
+For example, for the input above:
     X,  Y,  X,  X,  Y
      |   |   |   |   |_ At this point, the best Combo is Dark Soul (XXY)
      |   |   |   |_ At this point, the best Combo is The Damned (XX)
