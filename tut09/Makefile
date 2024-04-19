@@ -2,7 +2,7 @@ CC = clang
 CFLAGS = -Wall -Werror -g -fsanitize=address,leak,undefined
 
 .PHONY: all
-all: cmp
+all: hash
 
-cmp: cmp.c
-	$(CC) $(CFLAGS) -o cmp cmp.c
+hash: hash.c
+	$(CC) $(CFLAGS) -o hash hash.c
