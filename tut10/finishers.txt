@@ -1,0 +1,22 @@
+Suppose we are building a fighting game (like Mortal Kombat). We want to
+create a program that tell us what Combo the player entered.
+
+We start with a list of Combo sequences and the attack they map to, e.g.:
+   X X Y -> Torment
+   X X   -> The Damned
+   X     -> Straight Punch
+   Y X   -> Banished
+   Y X Y -> Dark Soul
+   Y     -> Specter Strike
+
+We then get the sequence of buttons the user pressed, one by one, e.g.
+    X,  Y,  X,  X,  Y
+
+After each button press we want to know - what's the best (longest) Combo
+the player can do? For example, for the input above:
+    X,  Y,  X,  X,  Y
+     |   |   |   |   |_ At this point, the best Combo is Dark Soul (XXY)
+     |   |   |   |_ At this point, the best Combo is The Damned (XX)
+     |   |   |_ At this point, the best Combo is Banished (YX)
+     |   |_ At this point, the best Combo is Specter Strike (Y)
+     |_ At this point, the best Combo is Straight Punch (X)

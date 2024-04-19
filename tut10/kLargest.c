@@ -4,7 +4,7 @@
 #include "Pq.h"
 
 #define N 10
-#define K 3
+#define K 20
 
 int kLargest(int *arr, int n, int *res, int k);
 
@@ -24,5 +24,24 @@ int main(void) {
  * elements into `res`. Returns how many items were placed into `res`.
  */
 int kLargest(int *arr, int n, int *res, int k) {
-    return 0;
+	// O(n * logn) Insert everything into PQ, extract the (n-k) smallest
+	// O(n * k) - iterate k times and find the biggest each time
+	// O(n * k) - maintain an array of the k largest, add to it as we go
+	// O(n * logk) - maintain a min heap of the k largest, add to it as we go
+
+	Pq pq = PqNew();
+	for (int i = 0; i < n; i++) {
+		if (i < k) {
+			PqInsert(pq, arr[i]);
+		} else if (arr[i] > PqPeek(pq)) {
+			PqExtract(pq);
+			PqInsert(pq, arr[i]);
+		}
+	}
+
+	int numResults = 0;
+	while (!PqIsEmpty(pq)) {
+		res[numResults++] = PqExtract(pq);
+	}
+    return numResults;
 }
