@@ -18,8 +18,8 @@ Combo the player can do?
 
 For example, for the input above:
     X,  Y,  X,  X,  Y
-     |   |   |   |   |_ At this point, the best Combo is Dark Soul (XXY)
-     |   |   |   |_ At this point, the best Combo is The Damned (XX)
-     |   |   |_ At this point, the best Combo is Banished (YX)
-     |   |_ At this point, the best Combo is Specter Strike (Y)
-     |_ At this point, the best Combo is Straight Punch (X)
+     |   |   |   |   |_ At this point, the best Combo is "Dark Soul" (XXY)
+     |   |   |   |_ At this point, the best Combo is "The Damned" (XX)
+     |   |   |_ At this point, the best Combo is "Banished" (YX)
+     |   |_ At this point, the best Combo is "Specter Strike" (Y)
+     |_ At this point, the best Combo is "Straight Punch" (X)
