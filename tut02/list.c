@@ -40,21 +40,51 @@ int main(void) {
  * Compute the length of a linked list
 */
 int listLength(struct node *head) {
-    return 0;
+	// Base case
+	if (head == NULL) {
+		return 0;
+	}
+
+	// Recursive case
+	int sublistLength = listLength(head->next);
+	return sublistLength + 1;
 }
 
 /**
  * Count the number of odd numbers in a linked list
 */
 int listCountOdds(struct node *head) {
-    return 0;
+	// Base case
+	if (head == NULL) {
+		return 0;
+	}
+
+	// Recursive case
+	int oddsInSublist = listCountOdds(head->next);
+
+	if (head->data % 2 == 0) {
+		return oddsInSublist;
+	} else {
+		return oddsInSublist + 1;
+	}
 }
 
 /**
  * Check whether a list is sorted in non-descending order
  */
 bool listIsSorted(struct node *head) {
-    return false;
+    // Base cases
+	if (head == NULL || head->next == NULL) {
+		return true;
+	}
+
+	if (head->next->data < head->data) {
+		return false;
+	}
+
+	// Recursive case
+	bool sublistIsSorted = listIsSorted(head->next);
+	return sublistIsSorted;
 }
 
 /**
@@ -62,6 +92,22 @@ bool listIsSorted(struct node *head) {
  * The function should return a pointer to the beginning of the updated list.
 */
 struct node *listDelete(struct node *head, int value) {
+	// Base cases
+	if (head == NULL) {
+		return NULL;
+	}
+
+	if (head->data == value) {
+		struct node *subList = head->next;
+		free(head);
+		return subList;
+	}
+
+	// Recursive case
+	struct node *sublistWithValueDeleted = listDelete(head->next, value);
+	head->next = sublistWithValueDeleted;
+	// head->next = listDelete(head->next, value);
+
     return head;
 }
 

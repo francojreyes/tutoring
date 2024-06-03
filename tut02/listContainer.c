@@ -38,12 +38,23 @@ int main(void) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-
+int doListLength(struct node *head);
 /**
  * Compute the length of a linked list
 */
 int listLength(struct list *l) {
-    return 0;
+	return doListLength(l->head);
+}
+
+int doListLength(struct node *head) {
+	// Base case
+	if (head == NULL) {
+		return 0;
+	}
+
+	// Recursive case
+	int sublistLength = doListLength(head->next);
+	return sublistLength + 1;
 }
 
 /**
