@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+#include "Set.h"
 #include "Stack.h"
 
 typedef struct queue *Queue;
@@ -17,7 +18,12 @@ Queue QueueNew(void) {
 }
 
 void QueueEnqueue(Queue q, int item) {
-    // TODO
+    Stack s = StackNew();
+	int size = StackSize(s);
+
+	Set set = SetNew();
+	SetInsert(s, 4);
+	set->size;
 }
 
 int QueueDequeue(Queue q) {

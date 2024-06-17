@@ -59,7 +59,21 @@ static struct node *newNode(int value) {
  * Counts the number of odd values in a tree
 */
 int BSTCountOdds(BST t) {
-    return 0;
+	// Base case
+	if (t == NULL) {
+		return 0;
+	}
+
+	// Recursive case
+//	int oddsInRestOfList = ListCountOdds(l->next);
+	int leftOdds = BSTCountOdds(t->left);
+	int rightOdds = BSTCountOdds(t->right);
+
+	if (t->value % 2 == 1) {
+		return leftOdds + rightOdds + 1;
+	} else {
+		return leftOdds + rightOdds;
+	}
 }
 
 /**
@@ -67,7 +81,15 @@ int BSTCountOdds(BST t) {
  * An internal node is a node with at least one non-empty subtree.
 */
 int BSTCountInternal(BST t) {
-	return 0;
+	// Base cases
+	if (t == NULL || (t->left == NULL && t->right == NULL)) {
+		return 0;
+	}
+
+	// Recursive case
+	int leftInternals = BSTCountInternal(t->left);
+	int rightInternals = BSTCountInternal(t->right);
+	return leftInternals + rightInternals + 1;
 }
 
 /**
@@ -76,7 +98,27 @@ int BSTCountInternal(BST t) {
  * The level of the root node is zero. 
 */
 int BSTNodeLevel(BST t, int key) {
-	return 0;
+	// Base case
+	if (t == NULL) return -1;
+	if (t->value == key) return 0;
+
+	// Recursive case
+	int subtreeLevel;
+	if (key < t->value) {
+		subtreeLevel = BSTNodeLevel(t->left, key);
+	} else /* if (key > t->value) */ {
+		subtreeLevel = BSTNodeLevel(t->right, key);
+	}
+
+	// (condition) ? (value if true) : (value if false)
+	return subtreeLevel == -1 ? -1 : subtreeLevel + 1;
+
+	if (subtreeLevel == -1) {
+		return -1;
+	} else {
+		return subtreeLevel + 1;
+	}
+
 }
 
 /**
@@ -84,5 +126,13 @@ int BSTNodeLevel(BST t, int key) {
  * This function should avoid visiting nodes that it doesn't have to visit
 */
 int BSTCountGreater(BST t, int val) {
+
+	// Reucrisve case
+	int numGreater = BSTCountGreater(t->right, val);
+
+	if (val < t->value) {
+		numGreater += BSTCountGreater(t->left, val);
+
+
 	return 0;
 }

@@ -1,7 +1,9 @@
 // Interface to the Set ADT
 #include <stdbool.h>
 
+
 typedef struct set *Set;
+
 
 // Creates a new empty set
 Set SetNew(void);
