@@ -1,56 +1,63 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node {
-    int data;
-    struct Node *next;
+struct node {
+	int data;
+	struct node *next;
 };
+typedef struct node *Node;
 
-void freeList(struct Node *head) {
+// Frees the list
+void freeList(struct node *head) {
 	if (head == NULL) {
-	return;
+		return;
 	}
-	// Frees the list by iterating through the list, using a temporary element and freeing the elements by using free (hopefully this comment is useful and helps out)
-	struct Node *Temp = head;
+
+	struct node *temp = head;
 	while (head != NULL) {
-	    Temp = head;
-	    head = head->next;
-	    free(Temp);
+		temp = head;
+		head = head->next;
+		free(temp);
 	}
 }
-void print_list(struct Node *node) {
-    while (node->next != NULL) {
-        printf("%d -> ", node->data);
-        node = node->next;
-    }
-    printf("%d\n", node->data);
-    return;
+
+// Prints out the list separated by ->
+void printList(struct node *head) {
+	while (head->next != NULL) {
+		printf("%d -> ", head->data);
+		head = head->next;
+	}
+	printf("%d\n", head->data);
 }
-struct Node *add(struct Node *a, int data) {
-    // malloc the node
-    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
-    // set the node's data field
-    newNode->data = data;
-    // set the node's next field to NULL
-    newNode->next = NULL;
-	if (a == NULL) {
-		a = newNode;
+
+// Append a node to the end of the list
+struct node *listAppend(struct node *head, int data) {
+	struct node *newNode = malloc(sizeof(struct node));
+	newNode->data = data;
+	newNode->next = NULL;
+
+	if (head == NULL) {
+		// Empty list
+		head = newNode;
 	} else {
-        struct Node *lastNode = a;
-        while (lastNode->next != NULL) {
-            lastNode = lastNode->next;
-        }
-        lastNode->next = newNode;
+		// Non-empty list
+		// Loop through and find last node
+		struct node *lastNode = head;
+		while (lastNode->next != NULL) {
+			lastNode = lastNode->next;
+		}
+		lastNode->next = newNode;
 	}
-	return a;
+	return head;
 }
+
 int main() {
-	struct Node *head = NULL;
-	head = add(head, 1);
-	head = add(head, 2);
-	head = add(head, 3);
-	head = add(head, 4);
-	print_list(head);
+	struct node *head = NULL;
+	head = listAppend(head, 1);
+	head = listAppend(head, 2);
+	head = listAppend(head, 3);
+	head = listAppend(head, 4);
+	printList(head);
 	freeList(head);
 	return 0;
 }
