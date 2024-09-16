@@ -66,21 +66,26 @@ void func5(int n) {
 
 // Complexity: O( ? )
 void func6(int n) {
-    int count = 0;
-    while (count < n) {
-        int random = rand() % n;
-        for (int i = 0; i < random && count < n; i++) {
-            printf("%d (%d)\n", count, i);
-            count++;
+    int i = 0;
+    while (i < n) {
+        // Generate a random number r in the range [0, n)
+        int r = rand() % n;
+
+        // Print the next r numbers on this line
+        for (int j = 0; j < r && i < n; j++) {
+            printf("%d ", i);
+            i++;
         }
         printf("\n");
     }
 }
 
 
-// Complexity: O( n^2 )
+// Complexity: O( ? )
 void func7(int n) {
-    func4(n);
+    for (int i = 0; i < n; i++) {
+        func4(n);
+    }
 }
 
 
@@ -113,7 +118,7 @@ int main(int argc, char **argv) {
     };
 
     if (argc != 3) {
-        printf("Usage: ./examples <func num> <n>\n");
+        printf("Usage: ./complexity <func num> <n>\n");
         return 1;
     }
 
