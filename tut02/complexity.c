@@ -5,38 +5,53 @@
 
 
 
-// Complexity: O( ? )
+// Complexity: 6 = 6 x 1 = 6 x n^0 = O( 1 )
 void func0(int n) {
     char *result;               
-    if (n % 2 == 1) {
-        result = "n is odd";
+    if (n % 2 == 1) { // mod, eq, if = 3
+        result = "n is odd"; // assn = 1
     } else {
-        result = "n is even";
+        result = "n is even"; // 1
     }
-    printf("%s\n", result);
-    return;
+    printf("%s\n", result); // print = 1
+    return; // return = 1
 }
 
-// Complexity: O( ? )
+// Complexity: 7 = 7x1 = O( 1 )
 void func1(int n) {
+    // mul, malloc, assn = 3
     int *arr = malloc(n * sizeof(int));
 
+    // index, assn = 2
     arr[3] = 1;
+
+    // print, assn = 2
     printf("%d\n", arr[0]);
 
+    // free = 1
     free(arr);
 }
 
 
-// Complexity: O( ? )
+// Complexity: 3n + 2 = O( n )
 void func2(int n) {
+    // assn = 1, incr = n, check = n+1
     for (int i = 0; i < n; i++) {
+        // n
         printf("%d\n", i);
     }
 }
 
+// number of times loop runs * complexity of body
+// n * O(1) = O(n)
 
-// Complexity: O( ? )
+// Complexity: O( logn )
+// # loops * body
+// log * O(1) = O(logn)
+
+// 2^x = n
+// log2(2^x) = log2(n)
+// x = log2(n)
 void func3(int n) {
     for (int i = 1; i < n; i *= 2) {
         printf("%d\n", i);
@@ -44,9 +59,14 @@ void func3(int n) {
 }
 
 
-// Complexity: O( ? )
+// Complexity: O( n^2 )
 void func4(int n) {
+    // # loop * body
+    // n * O(n) = O(n^2)
     for (int i = 0; i < n; i++) {
+
+        // # loop * body
+        // n * O(1) = O(n)
         for (int j = 0; j < n; j++) {
             printf("(%d, %d)\n", i, j);
         }
