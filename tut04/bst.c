@@ -66,7 +66,20 @@ int bstNumNodes(Bst t) {
  * Counts the number of odd values in a tree
 */
 int bstCountOdds(Bst t) {
-    return 0;
+    // Base case
+    if (t == NULL) {
+        return 0;
+    }
+
+    // Recursive case
+    int leftOdds = bstCountOdds(t->left);
+    int rightOdds = bstCountOdds(t->right);
+
+    if (t->value % 2 == 1) {
+        return leftOdds + rightOdds + 1;
+    } else {
+        return leftOdds + rightOdds;
+    }
 }
 
 /**
@@ -77,6 +90,10 @@ int bstCountInternal(Bst t) {
 	return 0;
 }
 
+int max(int a, int b) {
+    return a > b ? a : b;
+}
+
 /**
  * Compute the height of a tree. The height of a tree is defined as the
  * length of the longest path from the root to a leaf. The path length is
@@ -84,7 +101,16 @@ int bstCountInternal(Bst t) {
  * empty tree is -1.
  */
 int bstHeight(Bst t) {
-    return -1;
+    // Base case
+    if (t == NULL) {
+        return -1;
+    }
+
+    // Recursive case
+    int lh = bstHeight(t->left);
+    int rh = bstHeight(t->right);
+
+    return max(lh, rh) + 1;
 }
 
 /**
@@ -93,7 +119,22 @@ int bstHeight(Bst t) {
  * The level of the root node is zero. 
 */
 int bstNodeLevel(Bst t, int key) {
-	return 0;
+    // Base cases
+    if (t == NULL) {
+        return -1;
+    } else if (t->value == key) {
+        return 0;
+    }
+
+    // Recursive case
+    int childLevel;
+    if (key < t->value) {
+        childLevel = bstNodeLevel(t->left, key);
+    } else { // gt
+        childLevel = bstNodeLevel(t->right, key);
+    }
+
+	return childLevel == -1 ? -1 : childLevel + 1;
 }
 
 /**
@@ -101,5 +142,12 @@ int bstNodeLevel(Bst t, int key) {
  * This function should avoid visiting nodes that it doesn't have to visit
 */
 int bstCountGreater(Bst t, int val) {
-	return 0;
+	// base case ...
+
+
+    // recursive case
+    // right if val >= t->value
+    // left only if val < t->value
+
+    return 0;
 }
