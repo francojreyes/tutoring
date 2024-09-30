@@ -6,7 +6,7 @@
 |-----------------|--------|---------|--------|--------------------|-----------|---------|
 | **bubble**      | n      | n^2     | n^2    | n^2                | y         | y       |
 | **insertion**   | n      | n^2     | n^2    | n                  | y         | y       |
-| **select**      | n      | n       | n      |                    | n         | n       |
+| **select**      | n^2    | n^2     | n^2    |                    | n         | n       |
 | **merge**       | nlogn  | nlogn   | nlogn  |                    | n         | y       |
 | **naive quick** | n^2    | n^2     | nlogn  |                    | n         | n       |
 | **mo3 quick**   | nlogn  | nlogn   | nlogn  |                    | n         | n       |
