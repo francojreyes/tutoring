@@ -67,17 +67,18 @@ int main(void) {
 ////////////////////////////////////////////////////////////////////////
 
 char *htGet(char *ht[], char *key) {
-    return NULL;
+    return ht[hash(key)];
 }
 
 void htSet(char *ht[], char *key, char *value) {
-    
+    free(ht[hash(key)]);
+    ht[hash(key)] = strdup(value);
 }
 
 int hash(char *key) {
     int h = 0;
 	for (int i = 0; key[i] != '\0'; i++) {
-		h = h + key[i];
+		h = h + (i + 1) * key[i];
 	}
 	return h % N;
 }
